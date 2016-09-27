@@ -1,38 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-    int o;
 
-int max(n,m)
+void main(void)
 {
-    if(n>m)
-    {
-        return n;
-    }
-    else if (m>n)
-    {
-        return m;
-    }
-    else
-    {
-        return o;
-    }
-}
-void main()
-{
-   int valeur1,valeur2,resultat;
+ int tab[5];
+ int nombre,i,a,b,c,d,e;
 
-   printf("Entrez 2 valeurs:\n");
-   scanf("%d %d",&valeur1,&valeur2);
+ printf("saisissez 5 nombres entiers:\n");
+ scanf("%d %d %d %d %d",&a,&b,&c,&d,&e);
 
-   resultat=max(valeur1,valeur2);
-   if (resultat==o)
-   {
-       printf("les valeurs sont egales\n");
-   }
-   else
-   {
-       printf("valeur max:%d\n",resultat);
-   }
+ tab[0]=a;
+ tab[1]=b;
+ tab[2]=c;
+ tab[3]=d;
+ tab[4]=e;
 
+ printf("saisissez un nombre a chercher dans le tableau:\n");
+ scanf("%d",&nombre);
+
+ for(i=0;i<5;i++)
+ {
+     //printf("%d\n",tab[i]);
+
+     if(tab[i]==nombre)
+     {
+         printf("%d se trouve bien dans le tableau dans la case %d",nombre,i+1);
+         return;
+     }
+ }
+ printf("%d ne se trouve pas dans le tableau...",nombre);
 }
