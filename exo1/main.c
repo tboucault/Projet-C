@@ -1,33 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+double moy(int itab[],int iele)
+{
+    int i;
+    int imoy=0;
+    for(i=1;i<iele;i++)
+    {
+        imoy=(itab[i]+imoy)/i;
+    }
+    return imoy;
+}
+int mini(int itab[],int iele)
+{
+    int i;
+    int imin;
+    imin=itab[0];
+    for(i=1;i<iele;i++)
+    {
+        if(itab[i]<imin)
+        {
+            imin=itab[i];
+        }
+    }
+    return imin;
+}
 
 void main(void)
 {
- int tab[5];
- int nombre,i,a,b,c,d,e;
-
- printf("saisissez 5 nombres entiers:\n");
- scanf("%d %d %d %d %d",&a,&b,&c,&d,&e);
-
- tab[0]=a;
- tab[1]=b;
- tab[2]=c;
- tab[3]=d;
- tab[4]=e;
-
- printf("saisissez un nombre a chercher dans le tableau:\n");
- scanf("%d",&nombre);
-
- for(i=0;i<5;i++)
- {
-     //printf("%d\n",tab[i]);
-
-     if(tab[i]==nombre)
-     {
-         printf("%d se trouve bien dans le tableau dans la case %d",nombre,i+1);
-         return;
-     }
- }
- printf("%d ne se trouve pas dans le tableau...",nombre);
+    int itab[5]={2,5,6,1,10};
+    int imin,imoy;
+    imin=mini(itab,5);
+    imoy=moy(itab,5);
+    printf("min du tableau : %d\n",imin);
+    printf("moy du tableau : %d\n",imoy);
 }
