@@ -1,14 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+double prod(int itab[], int iele)
+{
+    int i;
+    double iprod=1;
+    for(i=0;i<iele;i++)
+    {
+        iprod=itab[i]*iprod;
+    }
+    return iprod;
+}
 double moy(int itab[],int iele)
 {
     int i;
-    int imoy=0;
+    double imoy=0;
     for(i=1;i<iele;i++)
     {
-        imoy=(itab[i]+imoy)/i;
+        imoy=(itab[i]+imoy);
     }
+    imoy=imoy/iele;
     return imoy;
 }
 int mini(int itab[],int iele)
@@ -29,9 +40,12 @@ int mini(int itab[],int iele)
 void main(void)
 {
     int itab[5]={2,5,6,1,10};
-    int imin,imoy;
+    int imin;
+    double imoy,iprod;
     imin=mini(itab,5);
     imoy=moy(itab,5);
-    printf("min du tableau : %d\n",imin);
-    printf("moy du tableau : %d\n",imoy);
+    iprod=prod(itab,5);
+    printf("minimum du tableau : %d\n",imin);
+    printf("moyenne du tableau : %f\n",imoy);
+    printf("produit du tableau : %f\n",iprod);
 }
