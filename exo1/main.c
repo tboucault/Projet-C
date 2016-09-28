@@ -91,7 +91,7 @@ void main(void)
     printf("\nVous devrez rembourser %f euros",valeur);
 }*/
 
-/* exo 5,6,7 */
+/* exo 5,6,7
 
 void affichecarre(int n);
 void affichetable(int n);
@@ -99,11 +99,13 @@ void affichetable(int n);
 void main(void)
 {
     int choix;
-    printf("combien? : ");
-    scanf("%d",&choix);
-    affichetable(choix);
-    printf("\n");
-    affichecarre(choix);
+    //affichetable(choix);
+    //printf("\n");
+
+    do{
+        scanf("%d",&choix);
+        affichecarre(choix);
+    }while(choix>0);
 }
 void affichetable(int n){
     int i;
@@ -122,8 +124,69 @@ void affichecarre(int n){
             printf("\n");
             j++;
     }while(j<n);
-}
+}*/
 
+/* exo 8,9,10,11
+
+void affiche(int t[], int taille);
+void miroir(int src[], int taille);
+void efface(int src[], int taille);
+
+void main(void)
+{
+    int choix,a,b,c,d;
+    int t[]={10,11,0,13};
+
+    printf("Quelle fonction?\n1:affiche\n2:miroir\n3:efface\n");
+    scanf("%d",&choix);
+
+    if(choix==1)
+    {
+        affiche(t,4);
+    }
+    else if(choix==2)
+    {
+        miroir(t,4);
+    }
+    else if(choix==3)
+    {
+        efface(t,4);
+    }
+    else if(choix==0)
+    {
+        return;
+    }
+    else
+        printf("Choix incorrect\n");
+
+}
+void affiche(int t[], int taille)
+{
+    int i;
+    for(i=0;i<taille;i++)
+    {
+        printf("%d ",t[i]);
+    }
+}
+void miroir(int src[], int taille)
+{
+    int i;
+    int dest[4];
+    for(i=0;i<taille;i++)
+    {
+        dest[i]=src[taille-i-1];
+        printf("%d ",dest[i]);
+    }
+}
+void efface(int src[], int taille)
+{
+    int i;
+    for(i=0;i<taille;i++)
+    {
+        if(src[i]!=0)
+            printf("%d ",src[i]);
+    }
+}*/
 
 
 
