@@ -68,6 +68,7 @@ void main(void)
         chiffre++;
     }
 }*/
+ /* exo 4 NE MARCHE PAS
 
 void main(void)
 {
@@ -88,4 +89,41 @@ void main(void)
         valeur=(1+(3/100));
 
     printf("\nVous devrez rembourser %f euros",valeur);
+}*/
+
+/* exo 5,6,7 */
+
+void affichecarre(int n);
+void affichetable(int n);
+
+void main(void)
+{
+    int choix;
+    printf("combien? : ");
+    scanf("%d",&choix);
+    affichetable(choix);
+    printf("\n");
+    affichecarre(choix);
 }
+void affichetable(int n){
+    int i;
+    for(i=0;i<=n;i++)
+    {
+        printf("%d*%d=%d\n",i,n,i*n);
+    }
+}
+void affichecarre(int n){
+    int i,j=0;
+    do{
+         for(i=1;i<=n;i++) // affichage des lignes
+            {
+                printf("*");
+            }
+            printf("\n");
+            j++;
+    }while(j<n);
+}
+
+
+
+
