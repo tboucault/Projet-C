@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1475655314 source:c:\users\bt612777\documents\miniprojet2\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1475664150 source:z:\miniprojet2\main.c
+	<stdio.h>
+	<stdlib.h>
+
