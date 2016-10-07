@@ -2,16 +2,14 @@
 #include <stdlib.h>
 
 int ispgm(FILE*,FILE*);
-int read_size(char[]);
-int main (void)
+int read_size(char[],char[],char[]);
+void main (void)
  {
      char tab [100];
      char format[3];
-     char c;
-     int i=0,j=0,k=0,l=0,m=0;
-     char contenu[10];
      char longueur[3];
      char largeur[3];
+     char contenu[10];
      FILE  *Image_Origine = NULL ,*Image_Nouvelle = NULL ;
      //Image_Origine  =  fopen ("C:\\Users\\Cyralik\\Documents\\GitHub\\Projet-C\\miniprojet2\\bin\\Debug\\lm1test.pgm", " r"); // ouverture fichier source
     // Image_Nouvelle  =  fopen ("C:\\Users\\Cyralik\\Documents\\GitHub\\Projet-C\\miniprojet2\\bin\\Debug\\lm1new.pgm", " w+"); // ouverture/création fichier destination
@@ -28,35 +26,17 @@ int main (void)
             {
                     printf("   - Fichier .pgm reconnu\n");
 
-                      fgets ( tab , 100 , Image_Origine );
-                      sscanf(tab,"%s",&contenu);
-                      fgets ( tab , 100 , Image_Origine );
-                      sscanf(tab,"%s",&contenu);
-                        //printf("%c",tab[0]);
+                    fgets ( tab , 100 , Image_Origine );
+                    sscanf(tab,"%s",&contenu);
+                    fgets ( tab , 100 , Image_Origine );
+                    sscanf(tab,"%s",&contenu);
+
                     while(contenu[0]=='#') //si ligne de commentaire, on saute de ligne
                     {
                         fgets ( tab , 100 , Image_Origine );
                         sscanf(tab,"%s",&contenu);
                     }
-                    //lecture de la taille du tableau
-                    do{
-                        c=tab[i++];
-                    }while(c!=' ');// detection de l'espace entre longueur et largeur
-                    do{
-                        c=tab[l++];
-                    }while(c!='\n');// detection fin de largeur
-
-                    for(j=0;j<i;j++)
-                    {
-                        longueur[j]=tab[j];//stockage longueur (valeur avant l'espace)
-                    }
-                    for(k=i;k<l-1;k++)
-                    {
-                        largeur[m]=tab[k];//stockage largeur (valeur apres l'espace)
-                        m++;
-                    }
-                   // sscanf(tab,"%d",&largeur);
-                   // sscanf(tab,"%d",&longueur);
+                    read_size(tab);
                    // fgets ( tab , 100 , Image_Origine );
                     //sscanf(tab,"%s",&contenu);
                     printf("coucou\n");
@@ -102,7 +82,28 @@ int ispgm(FILE* img_src,FILE* img_dest)
     else
         return 0; //pas fichier pgm
 }
-int read_size(char contenu[])
+int read_size(char tab[], char longueur[], char largeur[])
 {
+     int i=0,j=0,k=0,l=0,m=0;
+     char c;
 
+    //lecture de la taille du tableau
+    do{
+        c=tab[i++];
+    }while(c!=' ');// detection de l'espace entre longueur et largeur
+    do{
+        c=tab[l++];
+    }while(c!='\n');// detection fin de largeur
+
+    for(j=0;j<i-1;j++)
+    {
+        longueur[j]=tab[j];//stockage longueur (valeur avant l'espace)
+    }
+    for(k=i;k<l-1;k++)
+    {
+        largeur[m]=tab[k];//stockage largeur (valeur apres l'espace)
+        m++;
+    }
+    plongueur=&longueur;
+    plargeur=&largeur;
 }
