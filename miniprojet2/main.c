@@ -3,21 +3,20 @@
 
 int ispgm(FILE*,FILE*);
 int read_size(char[]);
-struct size {
-   int longeur;
-   int largeur;
-};
 int main (void)
  {
      char tab [100];
      char format[3];
-     int i,j,k=0;
-     int isreadable=1;
-     int largeur,longueur,intensite;
+     char c;
+     int i=0,j=0,k=0,l=0,m=0;
+     char contenu[10];
+     char longueur[3];
+     char largeur[3];
      FILE  *Image_Origine = NULL ,*Image_Nouvelle = NULL ;
+     //Image_Origine  =  fopen ("C:\\Users\\Cyralik\\Documents\\GitHub\\Projet-C\\miniprojet2\\bin\\Debug\\lm1test.pgm", " r"); // ouverture fichier source
+    // Image_Nouvelle  =  fopen ("C:\\Users\\Cyralik\\Documents\\GitHub\\Projet-C\\miniprojet2\\bin\\Debug\\lm1new.pgm", " w+"); // ouverture/création fichier destination
      Image_Origine  =  fopen ("Z:\\Projet-C\\miniprojet2\\bin\\Debug\\lm1test.pgm", " r"); // ouverture fichier source
      Image_Nouvelle  =  fopen ("Z:\\Projet-C\\miniprojet2\\bin\\Debug\\lm1new.pgm", " w+"); // ouverture/création fichier destination
-
 
      printf ("Debut  du  programme  du  TP  Image \n");
      // Verification de l’ ouverture des fichiers
@@ -28,17 +27,41 @@ int main (void)
             if(ispgm(Image_Origine,Image_Nouvelle)==1) // si fichier pgm, on continu
             {
                     printf("   - Fichier .pgm reconnu\n");
-                    fgets ( tab , 100 , Image_Origine );
-                    while(tab[0]=='#') //si ligne de commentaire, on saute de ligne
+
+                      fgets ( tab , 100 , Image_Origine );
+                      sscanf(tab,"%s",&contenu);
+                      fgets ( tab , 100 , Image_Origine );
+                      sscanf(tab,"%s",&contenu);
+                        //printf("%c",tab[0]);
+                    while(contenu[0]=='#') //si ligne de commentaire, on saute de ligne
                     {
                         fgets ( tab , 100 , Image_Origine );
-                        puts(tab);
+                        sscanf(tab,"%s",&contenu);
                     }
-                    if((isreadable==1)) //ligne contenant la taille de l'image
+                    //lecture de la taille du tableau
+                    do{
+                        c=tab[i++];
+                    }while(c!=' ');// detection de l'espace entre longueur et largeur
+                    do{
+                        c=tab[l++];
+                    }while(c!='\n');// detection fin de largeur
+
+                    for(j=0;j<i;j++)
                     {
-                        //read_size(tab);
-                        isreadable=0;
+                        longueur[j]=tab[j];//stockage longueur (valeur avant l'espace)
                     }
+                    for(k=i;k<l-1;k++)
+                    {
+                        largeur[m]=tab[k];//stockage largeur (valeur apres l'espace)
+                        m++;
+                    }
+                   // sscanf(tab,"%d",&largeur);
+                   // sscanf(tab,"%d",&longueur);
+                   // fgets ( tab , 100 , Image_Origine );
+                    //sscanf(tab,"%s",&contenu);
+                    printf("coucou\n");
+
+                    //fgets ( tab , 100 , Image_Origine );
 
 
                 // Recup  de  largeur , longueur  et intensite  de  l’ image  ( variables  a  declarer )
